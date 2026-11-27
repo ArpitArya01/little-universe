@@ -1,0 +1,7 @@
+﻿node_modules/
+.DS_Store
+Thumbs.db
+*.log
+
+# Unencrypted photos never go in the repo
+private-photos/

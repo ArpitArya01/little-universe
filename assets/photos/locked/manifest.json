@@ -1,0 +1,53 @@
+{
+  "v": 1,
+  "kdf": "PBKDF2-SHA-256",
+  "iter": 1000000,
+  "salt": "Dro88FCOrjS5A4tuxBDZuQ==",
+  "check": "UqkCvDNjLvDO6hqfkAhCsUz+G11EkTmqh7NImoRIzmJMnl4fO711DxC05g==",
+  "files": {
+    "image1.jpg": {
+      "file": "p01.enc",
+      "type": "image/jpeg"
+    },
+    "image10.jpg": {
+      "file": "p02.enc",
+      "type": "image/jpeg"
+    },
+    "image11.jpg": {
+      "file": "p03.enc",
+      "type": "image/jpeg"
+    },
+    "image2.jpg": {
+      "file": "p04.enc",
+      "type": "image/jpeg"
+    },
+    "image3.jpg": {
+      "file": "p05.enc",
+      "type": "image/jpeg"
+    },
+    "image4.jpg": {
+      "file": "p06.enc",
+      "type": "image/jpeg"
+    },
+    "image5.jpg": {
+      "file": "p07.enc",
+      "type": "image/jpeg"
+    },
+    "image6.jpg": {
+      "file": "p08.enc",
+      "type": "image/jpeg"
+    },
+    "image7.jpg": {
+      "file": "p09.enc",
+      "type": "image/jpeg"
+    },
+    "image8.jpg": {
+      "file": "p10.enc",
+      "type": "image/jpeg"
+    },
+    "image9.jpg": {
+      "file": "p11.enc",
+      "type": "image/jpeg"
+    }
+  }
+}

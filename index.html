@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>The Little Universe I Made For You</title>
+  <meta name="description" content="A tiny universe I made for Himani." />
+  <meta name="theme-color" content="#2a1846" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%92%96%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Fredoka:wght@400;600&family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Quicksand:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="on-intro">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ================= HUD ================= -->
+  <header class="hud" id="hud" aria-label="Chapter navigation">
+    <button class="hud-btn" id="backBtn" aria-label="Back to previous chapter">‹ <span class="hud-label">Back</span></button>
+    <div class="hud-progress">
+      <p class="hud-chapter" id="hudChapter" aria-live="polite">Chapter 1</p>
+      <ol class="hud-dots" id="hudDots"></ol>
+    </div>
+    <div class="hud-right">
+      <button class="hud-btn icon" id="musicBtn" aria-label="Play music" aria-pressed="false">🎵</button>
+      <button class="hud-btn icon" id="soundBtn" aria-label="Mute sound effects" aria-pressed="true">🔔</button>
+      <button class="hud-btn" id="skipBtn" aria-label="Skip animation">Skip <span aria-hidden="true">⏭</span></button>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ========== SCENE 1 — A MESSAGE FROM THE UNIVERSE ========== -->
+    <section class="scene s-universe active" id="scene-1" data-title="A Message from the Universe" aria-label="Chapter 1: A message from the universe">
+      <canvas class="starfield" data-stars="1400" aria-hidden="true"></canvas>
+      <div class="nebula" aria-hidden="true"></div>
+      <div class="u-cloud uc1" aria-hidden="true"></div>
+      <div class="u-cloud uc2" aria-hidden="true"></div>
+      <div class="u-cloud uc3" aria-hidden="true"></div>
+      <button class="moon secret-obj" data-secret="4" aria-label="The moon"></button>
+      <div class="mini-planet mp1" aria-hidden="true"></div>
+      <div class="mini-planet mp2" aria-hidden="true"></div>
+      <div class="mini-planet mp3" aria-hidden="true"></div>
+      <div class="spaceship" aria-hidden="true">
+        <svg viewBox="0 0 120 60">
+          <defs><linearGradient id="shipG" x1="0" x2="1"><stop offset="0" stop-color="#e8e0ff"/><stop offset="1" stop-color="#ffffff"/></linearGradient></defs>
+          <path class="flame" d="M14 30 L0 22 L5 30 L0 38 Z" fill="#ffb36b"/>
+          <path d="M18 18 Q60 6 98 30 Q60 54 18 42 Z" fill="url(#shipG)" stroke="#cdb4db" stroke-width="2"/>
+          <path d="M30 18 L22 6 L44 15 Z M30 42 L22 54 L44 45 Z" fill="#ffafcc"/>
+          <circle cx="66" cy="30" r="11" fill="#bde0fe" stroke="#a2d2ff" stroke-width="2"/>
+          <path d="M66 36 C58 31 59 25 63 25 C65 25 66 27 66 28 C66 27 67 25 69 25 C73 25 74 31 66 36Z" fill="#ff6f9c"/>
+        </svg>
+      </div>
+      <button class="shooting-star secret-obj" data-secret="0" aria-label="A shooting star">✦</button>
+
+      <div class="intro-center" id="introCenter">
+        <div class="intro-title">
+          <h1 tabindex="-1">The Little Universe I Made For You</h1>
+          <p class="tagline">A tiny universe, created for one very special person, Himani.</p>
+        </div>
+        <div class="planet-wrap">
+          <div class="planet-main" id="mainPlanet" aria-hidden="true"><span class="planet-ring"></span><span class="planet-heart">♥</span></div>
+        </div>
+        <p class="typed-line" id="introTyped" aria-live="polite"></p>
+        <button class="btn btn-glow" id="enterBtn" hidden>ENTER MY LITTLE UNIVERSE ✨</button>
+      </div>
+      <form class="gate glass" id="gate" hidden>
+        <p class="gate-icon" aria-hidden="true">🔐</p>
+        <h2 id="gateTitle"></h2>
+        <p class="gate-hint" id="gateHint"></p>
+        <div class="pl-row">
+          <label class="sr-only" for="gatePass">Secret code</label>
+          <input id="gatePass" type="password" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="secret code" />
+          <button class="btn btn-glow" id="gateBtn" type="submit">Open ✨</button>
+        </div>
+        <p class="pl-error" id="gateError" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <!-- ========== SCENE 2 — THE MAGICAL DOOR ========== -->
+    <section class="scene s-door" id="scene-2" data-title="The Magical Door" aria-label="Chapter 2: The magical door" inert aria-hidden="true">
+      <div class="door-sky" aria-hidden="true"><div class="door-sun"></div></div>
+      <div class="puffy pc1" aria-hidden="true"></div>
+      <div class="puffy pc2" aria-hidden="true"></div>
+      <div class="puffy pc3" aria-hidden="true"></div>
+      <svg class="door-hills" viewBox="0 0 1440 400" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0 210 Q260 90 520 190 T1040 170 T1440 150 V400 H0Z" fill="#cdeccf"/>
+        <path d="M0 280 Q360 180 720 270 T1440 250 V400 H0Z" fill="#a8dcb0"/>
+        <path d="M0 330 Q420 290 760 330 T1440 320 V400 H0Z" fill="#8fcf9c"/>
+      </svg>
+      <div class="fireflies" data-fireflies="22" aria-hidden="true"></div>
+      <div class="house" aria-hidden="false">
+        <svg class="house-svg" viewBox="0 0 300 300" aria-hidden="true">
+          <rect x="196" y="40" width="26" height="60" fill="#b07d6a"/>
+          <g class="smoke"><circle cx="209" cy="30" r="8" fill="#fff" opacity=".8"/><circle cx="216" cy="14" r="10" fill="#fff" opacity=".6"/><circle cx="206" cy="-4" r="12" fill="#fff" opacity=".4"/></g>
+          <rect x="45" y="130" width="210" height="160" rx="10" fill="#fff3e4" stroke="#f0d2b8" stroke-width="3"/>
+          <path d="M25 140 L150 40 L275 140 Z" fill="#ff9fbf" stroke="#f487ad" stroke-width="4" stroke-linejoin="round"/>
+          <path d="M60 128 L150 56 L240 128" fill="none" stroke="#ffc8dd" stroke-width="5" stroke-dasharray="2 14" stroke-linecap="round"/>
+          <circle cx="150" cy="100" r="16" fill="#ffe9a8" class="win-glow"/>
+          <path d="M150 84 V116 M134 100 H166" stroke="#e7a3b6" stroke-width="3"/>
+          <rect class="win-glow" x="66" y="165" width="44" height="44" rx="6" fill="#ffe9a8" stroke="#e7b48f" stroke-width="4"/>
+          <path d="M88 165 V209 M66 187 H110" stroke="#e7b48f" stroke-width="3"/>
+          <rect class="win-glow" x="190" y="165" width="44" height="44" rx="6" fill="#ffe9a8" stroke="#e7b48f" stroke-width="4"/>
+          <path d="M212 165 V209 M190 187 H234" stroke="#e7b48f" stroke-width="3"/>
+          <path d="M60 212 h56 M184 212 h56" stroke="#c79a7a" stroke-width="5" stroke-linecap="round"/>
+          <g fill="#ff8fb3"><circle cx="70" cy="214" r="5"/><circle cx="88" cy="212" r="5"/><circle cx="106" cy="214" r="5"/><circle cx="194" cy="214" r="5"/><circle cx="212" cy="212" r="5"/><circle cx="230" cy="214" r="5"/></g>
+          <rect x="118" y="194" width="64" height="96" rx="32" fill="#7a4c3c"/>
+          <path d="M100 290 H200" stroke="#e9c9a9" stroke-width="8" stroke-linecap="round"/>
+        </svg>
+        <div class="door-light" aria-hidden="true"></div>
+        <div class="door" id="door" aria-hidden="true">
+          <span class="door-knob"></span><span class="door-heart">♥</span>
+        </div>
+        <button class="door-letter" id="doorLetter" aria-label="Open the letter that came out of the door" hidden>
+          <span class="mini-env" aria-hidden="true"><span class="mini-flap"></span><span class="mini-seal">♥</span></span>
+          <span class="door-letter-label">A letter for you 💌<br><small>tap to open</small></span>
+        </button>
+      </div>
+      <div class="door-bunny" data-char="bunny" aria-hidden="true"></div>
+      <div class="sway-flowers" data-flowers="16" aria-hidden="true"></div>
+      <div class="butterfly bf1" aria-hidden="true"><i></i><i></i></div>
+      <div class="butterfly bf2" aria-hidden="true"><i></i><i></i></div>
+      <button class="snail secret-obj" data-secret="1" aria-label="A tiny snail">
+        <svg viewBox="0 0 60 36" aria-hidden="true"><path d="M4 32 Q8 26 18 28 H52 Q58 28 56 32 Z" fill="#ffd6a5"/><circle cx="32" cy="18" r="13" fill="#cdb4db"/><path d="M32 18 m-6 0 a6 6 0 1 1 6 6 a3 3 0 1 1 -3 -3" fill="none" stroke="#9a7fb5" stroke-width="2"/><path d="M50 28 L52 16 M54 28 L58 18" stroke="#e8b88a" stroke-width="2"/><circle cx="52" cy="15" r="2" fill="#5b4a6b"/><circle cx="58" cy="17" r="2" fill="#5b4a6b"/></svg>
+      </button>
+      <div class="door-message glass" id="doorMessage">
+        <p class="door-text" id="doorTyped" aria-live="polite"></p>
+        <button class="btn btn-wood" id="knockBtn" hidden>Knock Knock 🚪</button>
+      </div>
+    </section>
+
+    <!-- ========== SCENE 3 — THE APOLOGY CINEMA ========== -->
+    <section class="scene s-cinema" id="scene-3" data-title="The Apology Cinema" aria-label="Chapter 3: The apology cinema" inert aria-hidden="true">
+      <div class="cin-sky-warm" aria-hidden="true"></div>
+      <div class="cin-sun" aria-hidden="true"></div>
+      <div class="storm-cloud sc-l" aria-hidden="true"></div>
+      <div class="storm-cloud sc-r" aria-hidden="true"></div>
+      <div class="storm-cloud sc-m" aria-hidden="true"></div>
+      <canvas class="rain" id="rainCanvas" aria-hidden="true"></canvas>
+      <svg class="cin-hills" viewBox="0 0 1440 300" preserveAspectRatio="none" aria-hidden="true">
+        <path class="hill-a" d="M0 150 Q360 60 720 140 T1440 120 V300 H0Z"/>
+        <path class="hill-b" d="M0 220 Q400 150 800 210 T1440 200 V300 H0Z"/>
+      </svg>
+      <div class="cin-flowers" data-cinflowers="12" aria-hidden="true"></div>
+      <div class="cin-character" data-char="bunny-heart" aria-hidden="true"></div>
+      <div class="letterbox" aria-hidden="true"></div>
+      <div class="scene-scroll cin-layout">
+        <div class="cinema-screen" id="cinemaScreen">
+          <p class="cin-label">🎬 Now showing</p>
+          <h2 class="cin-greeting" tabindex="-1" id="cinGreeting"></h2>
+          <div class="cin-lines" id="cinLines"></div>
+          <button class="btn btn-soft" id="cinNext" aria-label="Show next line">Next ›</button>
+          <button class="btn btn-glow" data-next hidden id="cinContinue">Continue ➜</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== SCENE 4 — THE HAPPINESS LAB ========== -->
+    <section class="scene s-lab" id="scene-4" data-title="The Happiness Lab" aria-label="Chapter 4: The happiness lab" inert aria-hidden="true">
+      <div class="lab-wall" aria-hidden="true"></div>
+      <div class="lab-shelf ls1" aria-hidden="true">
+        <span class="flask f1"><i></i><i></i><i></i></span><span class="flask f2"><i></i><i></i></span><span class="flask f3"><i></i><i></i><i></i></span><span class="jar">🍬</span>
+      </div>
+      <div class="lab-shelf ls2" aria-hidden="true">
+        <span class="jar">🌸</span><span class="flask f2"><i></i><i></i></span><span class="jar">⭐</span><span class="flask f1"><i></i><i></i></span>
+      </div>
+      <div class="scene-scroll lab-layout">
+        <header class="lab-head">
+          <p class="lab-badge">🧪 Est. today · For Himani only</p>
+          <h2 tabindex="-1">THE OFFICIAL SMILE RESEARCH LAB</h2>
+        </header>
+        <div class="lab-floor">
+          <button class="scientist" id="scientist" aria-label="The bunny scientist. Tap to read a research note.">
+            <span data-char="bunny-lab"></span>
+            <span class="sci-flask" aria-hidden="true"><i></i><i></i><i></i></span>
+          </button>
+          <div class="machines">
+            <!-- 1 HUG GENERATOR -->
+            <div class="machine m-hug">
+              <div class="m-title">Hug Generator</div>
+              <div class="gauge" aria-hidden="true"><span class="needle" id="hugNeedle"></span><b>HUG-O-METER</b></div>
+              <button class="big-red" id="hugBtn" aria-label="Generate a giant virtual hug"><span>HUG</span></button>
+              <p class="m-hint">Press for one giant hug</p>
+            </div>
+            <!-- 2 FLOWER GENERATOR -->
+            <div class="machine m-flower">
+              <div class="m-title">Flower Generator</div>
+              <div class="dome">
+                <svg class="grow-flower" id="growFlower" viewBox="0 0 120 150" aria-hidden="true">
+                  <ellipse cx="60" cy="132" rx="8" ry="5" class="seed" fill="#8b5e3c"/>
+                  <path class="gf-stem" d="M60 132 C58 110 64 90 60 60" stroke="#6cbf7a" stroke-width="5" fill="none" stroke-linecap="round" pathLength="100"/>
+                  <path class="gf-leaf l1" d="M60 110 C45 102 40 92 42 88 C52 90 58 98 60 110Z" fill="#8fd59c"/>
+                  <path class="gf-leaf l2" d="M60 96 C75 88 80 78 78 74 C68 76 62 84 60 96Z" fill="#8fd59c"/>
+                  <g class="gf-head"></g>
+                </svg>
+                <span class="pot" aria-hidden="true"></span>
+              </div>
+              <button class="btn btn-small" id="flowerBtn">Plant a seed 🌱</button>
+            </div>
+            <!-- 3 COMPLIMENT MACHINE -->
+            <div class="machine m-compliment">
+              <div class="m-title">Compliment Machine</div>
+              <div class="tv">
+                <span class="antenna" aria-hidden="true"></span>
+                <div class="tv-screen"><p id="complimentText" aria-live="polite">Press the button for a compliment!</p></div>
+                <span class="knobs" aria-hidden="true"><i></i><i></i></span>
+              </div>
+              <button class="btn btn-small" id="complimentBtn">Generate 💬</button>
+            </div>
+            <!-- 4 SMILE DETECTOR -->
+            <div class="machine m-smile">
+              <div class="m-title">Smile Detector</div>
+              <div class="radar" id="radar">
+                <span class="radar-face" aria-hidden="true">☺</span>
+                <span class="scan-line" aria-hidden="true"></span>
+                <p class="radar-status" id="scanStatus" aria-live="polite">Ready to scan</p>
+                <span class="radar-bar" aria-hidden="true"><i id="scanBar"></i></span>
+              </div>
+              <button class="btn btn-small" id="scanBtn">Start scan 🔍</button>
+            </div>
+            <!-- 5 HAPPINESS DISPENSER -->
+            <div class="machine m-dispense">
+              <div class="m-title">Happiness Dispenser</div>
+              <div class="gumball" aria-hidden="true">
+                <div class="globe"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+                <div class="gb-base"><span class="crank" id="crank"></span><span class="chute" id="chute"></span></div>
+              </div>
+              <button class="btn btn-small" id="dispenseBtn">Dispense ✨</button>
+              <div class="tray" id="tray" aria-label="Your stickers"></div>
+            </div>
+          </div>
+        </div>
+        <button class="lab-cat secret-obj" data-secret="2" aria-label="A sleepy lab cat">
+          <svg viewBox="0 0 70 50" aria-hidden="true"><path d="M10 48 Q8 22 22 18 L18 4 L30 14 Q35 12 40 14 L52 4 L48 18 Q62 22 60 48Z" fill="#ffd6a5" stroke="#e8b88a" stroke-width="2"/><path d="M24 30 q4 -3 8 0 M38 30 q4 -3 8 0" stroke="#5b4a6b" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M33 36 l2 2 l2 -2" stroke="#ff8fb3" stroke-width="2" fill="none"/><ellipse cx="20" cy="36" rx="4" ry="2.5" fill="#ffb3cc"/><ellipse cx="50" cy="36" rx="4" ry="2.5" fill="#ffb3cc"/></svg>
+        </button>
+        <div class="scene-foot"><button class="btn btn-glow" data-next>Next chapter ➜</button></div>
+      </div>
+    </section>
+
+    <!-- ========== SCENE 5 — COLLECT THE LITTLE HEARTS ========== -->
+    <section class="scene s-game" id="scene-5" data-title="Collect the Little Hearts" aria-label="Chapter 5: Collect the little hearts mini-game" inert aria-hidden="true">
+      <canvas id="gameCanvas" aria-label="Mini-game: move the bunny to collect hearts and stars" role="img"></canvas>
+      <div class="game-hud" aria-live="polite">
+        <span class="g-pill">💖 <b id="gHearts">0</b>/5</span>
+        <span class="g-pill">⭐ <b id="gStars">0</b></span>
+      </div>
+      <p class="game-msg" id="gameMsg" aria-live="polite"></p>
+      <div class="game-start glass" id="gameStart">
+        <h2 tabindex="-1">Collect the Little Hearts 🎮</h2>
+        <p>Himani, help the bunny collect <b>5 hearts</b> and I'll show you a secret letter.</p>
+        <p class="g-controls">Arrows or WASD to move · on a phone, use the buttons or drag on the screen</p>
+        <button class="btn btn-glow" id="gameStartBtn">Let's play! 🐰</button>
+      </div>
+      <div class="dpad" id="dpad" aria-label="Movement controls">
+        <button data-dir="up" aria-label="Move up">▲</button>
+        <button data-dir="left" aria-label="Move left">◀</button>
+        <button data-dir="right" aria-label="Move right">▶</button>
+        <button data-dir="down" aria-label="Move down">▼</button>
+      </div>
+      <button class="btn btn-glow game-next" data-next hidden id="gameNext">Next chapter ➜</button>
+      <button class="btn btn-soft game-skip" data-next id="gameSkip">Skip game ›</button>
+    </section>
+
+    <!-- ========== SCENE 6 — THE GARDEN OF LITTLE THINGS ========== -->
+    <section class="scene s-garden" id="scene-6" data-title="The Garden of Little Things" aria-label="Chapter 6: The garden of little things" inert aria-hidden="true">
+      <div class="g-rays" aria-hidden="true"></div>
+      <div class="g-sun" aria-hidden="true"></div>
+      <svg class="g-hills" viewBox="0 0 1440 400" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0 200 Q300 100 640 180 T1440 140 V400 H0Z" fill="#d6f0dc"/>
+        <path d="M0 260 Q420 180 860 250 T1440 230 V400 H0Z" fill="#b9e4c2"/>
+        <path d="M0 320 Q500 270 960 310 T1440 300 V400 H0Z" fill="#9ed8ab"/>
+      </svg>
+      <div class="g-head">
+        <h2 tabindex="-1">The Garden of Little Things 🌷</h2>
+        <p>Seven flowers, seven things I love about you. Tap each bud.</p>
+        <p class="g-count" id="gCount" aria-live="polite">0 / 7 bloomed</p>
+      </div>
+      <div class="g-field" id="gField"></div>
+      <button class="mushroom secret-obj" data-secret="3" aria-label="A tiny mushroom">
+        <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M4 20 Q20 0 36 20Z" fill="#ff8fa3"/><circle cx="14" cy="13" r="3" fill="#fff"/><circle cx="24" cy="10" r="2.5" fill="#fff"/><circle cx="29" cy="16" r="2" fill="#fff"/><rect x="15" y="20" width="10" height="16" rx="4" fill="#fff3e4"/></svg>
+      </button>
+      <div class="flower-card glass" id="flowerCard" role="dialog" aria-modal="false" aria-labelledby="flowerCardTitle" hidden>
+        <button class="card-x" id="flowerCardClose" aria-label="Close message">×</button>
+        <div class="fc-media" id="flowerCardMedia"></div>
+        <h3 id="flowerCardTitle"></h3>
+        <p id="flowerCardMsg"></p>
+      </div>
+      <button class="btn btn-glow g-next" data-next>Next chapter ➜</button>
+    </section>
+
+    <!-- ========== SCENE 7 — OUR LITTLE MEMORY MUSEUM ========== -->
+    <section class="scene s-museum" id="scene-7" data-title="Our Little Memory Museum" aria-label="Chapter 7: Our little memory museum" inert aria-hidden="true">
+      <div class="mu-wall" aria-hidden="true"></div>
+      <div class="mu-wainscot" aria-hidden="true"></div>
+      <div class="mu-floor" aria-hidden="true"></div>
+      <div class="mu-spot s1" aria-hidden="true"></div>
+      <div class="mu-spot s2" aria-hidden="true"></div>
+      <div class="mu-spot s3" aria-hidden="true"></div>
+      <div class="scene-scroll mu-layout">
+        <div class="plaque"><h2 tabindex="-1">Our Little Memory Museum</h2><p>Exhibit: the two of us · Admission: one smile</p></div>
+        <form class="photo-lock glass" id="photoLock" hidden>
+          <p class="pl-icon" aria-hidden="true">🔒💗</p>
+          <h3>These photos are just for the two of us</h3>
+          <p class="pl-hint" id="photoLockHint"></p>
+          <div class="pl-row">
+            <label class="sr-only" for="photoPass">Secret word</label>
+            <input id="photoPass" type="password" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="secret word" />
+            <button class="btn btn-glow" id="photoLockBtn" type="submit">Unlock 🔑</button>
+          </div>
+          <p class="pl-error" id="photoLockError" aria-live="polite"></p>
+        </form>
+        <div class="gallery" id="gallery"></div>
+        <p class="mu-hint">Tap a photo to look closer. You can drag the stickers around 💕</p>
+        <div class="scene-foot"><button class="btn btn-glow" data-next>Next chapter ➜</button></div>
+      </div>
+      <div class="sticker-layer" id="stickerLayer"></div>
+      <div class="butterfly bf3" aria-hidden="true"><i></i><i></i></div>
+      <div class="butterfly bf4" aria-hidden="true"><i></i><i></i></div>
+    </section>
+
+    <!-- ========== SCENE 8 — THE BROKEN STAR REPAIR SHOP ========== -->
+    <section class="scene s-star" id="scene-8" data-title="The Broken Star Repair Shop" aria-label="Chapter 8: The broken star repair shop" inert aria-hidden="true">
+      <div class="ws-lamps" aria-hidden="true"><span></span><span></span><span></span></div>
+      <div class="ws-shelf" aria-hidden="true"><i>✦</i><i>✧</i><i>✦</i><i>✧</i></div>
+      <div class="ws-bench" aria-hidden="true"></div>
+      <div class="scene-scroll star-layout">
+        <header class="star-head">
+          <p class="shop-sign">⭐ The Broken Star Repair Shop ⭐</p>
+          <h2 tabindex="-1" id="starIntro"></h2>
+          <p class="star-sub">Each glowing fragment holds a promise I'm making to you, Himani. Tap them to place them back.</p>
+        </header>
+        <div class="star-stage" id="starStage">
+          <div class="star-rays" aria-hidden="true"></div>
+          <svg class="big-star" id="bigStar" viewBox="0 0 200 200" aria-hidden="true">
+            <defs>
+              <radialGradient id="starFill" cx="50%" cy="45%" r="60%"><stop offset="0" stop-color="#fff7d6"/><stop offset=".6" stop-color="#ffd88a"/><stop offset="1" stop-color="#f6b26b"/></radialGradient>
+            </defs>
+            <path class="star-body" d="M100 12 L124 72 L188 76 L138 116 L154 180 L100 144 L46 180 L62 116 L12 76 L76 72 Z" fill="url(#starFill)" stroke="#fff2c2" stroke-width="3" stroke-linejoin="round"/>
+            <g class="cracks" stroke="#5a3d7a" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path class="crack" d="M100 40 L94 62 L104 78 L98 96"/>
+              <path class="crack" d="M150 84 L132 92 L124 104 L110 102"/>
+              <path class="crack" d="M136 150 L126 132 L116 128 L108 114"/>
+              <path class="crack" d="M64 150 L76 134 L86 130 L92 114"/>
+              <path class="crack" d="M48 84 L66 92 L78 102 L90 100"/>
+              <path class="crack" d="M100 106 L96 116 L104 124"/>
+            </g>
+            <g class="star-face"><circle cx="86" cy="100" r="4" fill="#5a3d7a"/><circle cx="114" cy="100" r="4" fill="#5a3d7a"/><path class="star-mouth" d="M92 116 Q100 112 108 116" stroke="#5a3d7a" stroke-width="3" fill="none" stroke-linecap="round"/><ellipse cx="78" cy="112" rx="6" ry="3.5" fill="#ff9fbf" opacity=".7"/><ellipse cx="122" cy="112" rx="6" ry="3.5" fill="#ff9fbf" opacity=".7"/></g>
+          </svg>
+          <div class="fragments" id="fragments"></div>
+        </div>
+        <div class="repair-log glass">
+          <h3>Repair log 📜</h3>
+          <ol id="promiseLog" aria-live="polite"></ol>
+          <p class="restored-msg" id="restoredMsg" hidden></p>
+        </div>
+        <div class="scene-foot"><button class="btn btn-glow" data-next id="starNext">Next chapter ➜</button></div>
+      </div>
+    </section>
+
+    <!-- ========== SCENE 9 — THE SECRET CONSTELLATION ========== -->
+    <section class="scene s-sky" id="scene-9" data-title="The Secret Constellation" aria-label="Chapter 9: The secret constellation" inert aria-hidden="true">
+      <canvas class="starfield" data-stars="900" data-shooting="1" aria-hidden="true"></canvas>
+      <div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
+      <svg class="sky-mountains" viewBox="0 0 1440 260" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0 260 V170 L140 90 L260 160 L400 60 L560 170 L700 110 L860 190 L1000 80 L1160 170 L1300 110 L1440 160 V260Z" fill="#1a1238"/>
+        <path d="M0 260 V210 L200 150 L380 210 L620 160 L820 220 L1080 160 L1300 220 L1440 190 V260Z" fill="#120c28"/>
+      </svg>
+      <div class="sky-head">
+        <h2 tabindex="-1">The Secret Constellation 🌠</h2>
+        <p id="skyHint">I hid some messages for you up here. Find the twinkling stars.</p>
+      </div>
+      <svg class="const-lines" id="constLines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"></svg>
+      <div class="const-stars" id="constStars"></div>
+      <div class="star-msg glass" id="starMsg" aria-live="polite" hidden></div>
+      <button class="btn btn-glow sky-next" data-next>Next chapter ➜</button>
+    </section>
+
+    <!-- ========== SCENE 10 — THE TIME CAPSULE ========== -->
+    <section class="scene s-capsule" id="scene-10" data-title="The Time Capsule" aria-label="Chapter 10: The time capsule" inert aria-hidden="true">
+      <div class="cap-grid" aria-hidden="true"></div>
+      <div class="cap-bubbles" data-bubbles="16" aria-hidden="true"></div>
+      <div class="scene-scroll cap-layout">
+        <header class="cap-head">
+          <h2 tabindex="-1">The Time Capsule ⏳</h2>
+          <p>I sealed four things in here for you. Tap one to open it.</p>
+        </header>
+        <div class="capsule-wrap">
+          <span class="cap-ring r1" aria-hidden="true"></span>
+          <span class="cap-ring r2" aria-hidden="true"></span>
+          <div class="capsule">
+            <span class="cap-shine" aria-hidden="true"></span>
+            <button class="cap-item" data-cap="letter"><span class="ci-icon" aria-hidden="true">✉️</span><span>Apology letter</span></button>
+            <button class="cap-item" data-cap="photos"><span class="ci-icon" aria-hidden="true">📷</span><span>Photographs</span></button>
+            <button class="cap-item" data-cap="promises"><span class="ci-icon" aria-hidden="true">📜</span><span>Promises</span></button>
+            <button class="cap-item" data-cap="future"><span class="ci-icon" aria-hidden="true">🔮</span><span>For the future</span></button>
+          </div>
+          <span class="cap-shadow" aria-hidden="true"></span>
+        </div>
+        <div class="scene-foot"><button class="btn btn-glow" data-next>Next chapter ➜</button></div>
+      </div>
+    </section>
+
+    <!-- ========== SCENE 11 — THE FINAL LOVE LETTER ========== -->
+    <section class="scene s-letter" id="scene-11" data-title="The Final Love Letter" aria-label="Chapter 11: The final love letter" inert aria-hidden="true">
+      <div class="letter-world" id="letterWorld">
+        <canvas class="starfield" data-stars="500" aria-hidden="true"></canvas>
+        <div class="rising-hearts" data-hearts="14" aria-hidden="true"></div>
+        <svg class="rose rose-l" viewBox="0 0 160 200" aria-hidden="true"><use href="#roseSym"/></svg>
+        <svg class="rose rose-r" viewBox="0 0 160 200" aria-hidden="true"><use href="#roseSym"/></svg>
+        <div class="butterfly bf5" aria-hidden="true"><i></i><i></i></div>
+        <div class="butterfly bf6" aria-hidden="true"><i></i><i></i></div>
+        <div class="letter-head">
+          <h2 tabindex="-1">The Final Love Letter 💌</h2>
+          <p>This one matters most to me, Himani. Tap the envelope.</p>
+        </div>
+        <button class="envelope" id="envelope" aria-label="Open the envelope">
+          <span class="env-back"></span>
+          <span class="env-paper"><span>For you ♥</span></span>
+          <span class="env-front"></span>
+          <span class="env-flap"></span>
+          <span class="env-seal">♥</span>
+        </button>
+      </div>
+      <div class="letter-sheet" id="letterSheet" role="dialog" aria-modal="false" aria-label="The love letter" hidden>
+        <div class="sheet-inner" id="sheetInner">
+          <p class="sheet-text" id="letterText"></p>
+          <p class="sheet-sign" id="letterSign"></p>
+        </div>
+        <div class="sheet-actions">
+          <button class="btn btn-soft" id="letterReplay">Read again ↺</button>
+          <button class="btn btn-glow" data-next id="letterNext" hidden>One last place ✨</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== SCENE 12 — THE FINAL SURPRISE ========== -->
+    <section class="scene s-end" id="scene-12" data-title="The Final Surprise" aria-label="Chapter 12: The final surprise" inert aria-hidden="true">
+      <canvas class="starfield" data-stars="1000" data-shooting="1" aria-hidden="true"></canvas>
+      <div class="end-moon" aria-hidden="true"></div>
+      <div class="end-glow" aria-hidden="true"></div>
+      <svg class="end-hills" viewBox="0 0 1440 360" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0 200 Q360 110 720 180 T1440 150 V360 H0Z" fill="#5a3a7e"/>
+        <path d="M0 260 Q300 190 660 250 T1440 230 V360 H0Z" fill="#46306a"/>
+        <path d="M0 310 Q520 260 1000 300 T1440 290 V360 H0Z" fill="#35234f"/>
+      </svg>
+      <div class="end-flowers" data-endflowers="14" aria-hidden="true"></div>
+      <div class="sky-garden" id="skyGarden" aria-hidden="true"></div>
+      <div class="teddy-wrap" data-char="teddy" aria-hidden="true"></div>
+      <div class="scene-scroll end-layout">
+        <div class="end-text">
+          <h2 tabindex="-1" class="end-line" id="endLine1"></h2>
+          <p class="end-line" id="endLine2"></p>
+        </div>
+        <div class="end-buttons" id="endButtons">
+          <button class="btn btn-glow" id="endHug">OPEN A VIRTUAL HUG 🫂</button>
+          <button class="btn btn-glow" id="endFlower">SEND A FLOWER 🌷</button>
+          <button class="btn btn-glow" id="endSurprise">ONE LAST SURPRISE 🎁</button>
+        </div>
+        <p class="final-text" id="finalText"></p>
+        <button class="btn btn-soft restart" id="restartBtn">Start the journey again ↺</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- Shared rose symbol -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="roseSym" viewBox="0 0 160 200">
+      <path d="M80 200 C78 160 84 130 80 96" stroke="#5f9e6e" stroke-width="6" fill="none"/>
+      <path d="M80 160 C56 150 46 132 50 126 C66 128 76 142 80 160Z" fill="#7cc08a"/>
+      <path d="M81 140 C104 128 112 112 108 106 C92 110 84 124 81 140Z" fill="#7cc08a"/>
+      <circle cx="80" cy="70" r="40" fill="#e8577e"/>
+      <path d="M48 66 C50 40 70 30 82 34 C70 42 66 56 70 70 Z" fill="#ff7a9c"/>
+      <path d="M112 66 C110 42 94 32 82 34 C92 44 94 56 90 70 Z" fill="#d94570"/>
+      <path d="M62 74 C64 54 80 48 92 54 C82 58 76 68 80 82 Z" fill="#ff9ab4"/>
+      <path d="M70 66 Q80 56 90 66 Q84 78 74 74" fill="none" stroke="#b8325a" stroke-width="3"/>
+      <path d="M44 80 C52 104 78 112 96 106 C112 100 118 86 116 76 C104 96 64 100 44 80Z" fill="#c93a63"/>
+    </symbol>
+  </svg>
+
+  <!-- ================= Overlays ================= -->
+  <div class="companion" id="companion" hidden>
+    <button class="companion-btn" id="companionBtn" aria-label="Twinkle, your little companion. Tap for a message.">
+      <svg viewBox="0 0 80 80" aria-hidden="true">
+        <path d="M40 4 L50 28 L76 30 L56 47 L62 74 L40 60 L18 74 L24 47 L4 30 L30 28 Z" fill="#ffe08a" stroke="#fff4c4" stroke-width="3" stroke-linejoin="round"/>
+        <circle cx="33" cy="40" r="3.2" fill="#5a3d7a"/><circle cx="47" cy="40" r="3.2" fill="#5a3d7a"/>
+        <path d="M35 48 Q40 52 45 48" stroke="#5a3d7a" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+        <ellipse cx="28" cy="47" rx="4" ry="2.4" fill="#ff9fbf"/><ellipse cx="52" cy="47" rx="4" ry="2.4" fill="#ff9fbf"/>
+      </svg>
+    </button>
+    <p class="companion-bubble" id="companionBubble" aria-live="polite"></p>
+  </div>
+
+  <div class="transition" id="transition" aria-hidden="true"><span class="t-heart">♥</span></div>
+  <div class="fx-layer" id="fxLayer" aria-hidden="true"></div>
+  <canvas class="confetti" id="confetti" aria-hidden="true"></canvas>
+  <div class="balloon-layer" id="balloonLayer"></div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <div class="modal" id="modal" hidden>
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-box" id="modalBox" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="card-x" id="modalClose" aria-label="Close">×</button>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+
+  <noscript><p class="noscript">This little universe needs JavaScript to come alive. Please enable it 💖</p></noscript>
+
+  <script src="content.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
